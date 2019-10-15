@@ -1,3 +1,8 @@
+#ifndef MATERIA_H
+#define MATERIA_H
+
+#include <stdlib.h>
+
 typedef struct materia{
 	char * nome;
 	int mencao;
@@ -9,8 +14,9 @@ typedef struct lista_materia{
 	int size;
 }Lista_Materia;
 
-Materia * Cria_Materia();
-Lista_Materia * Cria_Lista_Materia();
+Materia * cria_materia();
+Lista_Materia * cria_lista_materia();
 void push_materia(Lista_Materia * lista, Materia * materia);
-int  is_empty_Materia(Lista_Materia * lista);
+int  is_empty_materia(Lista_Materia * lista);
 
+#endif
