@@ -4,5 +4,6 @@
 #include <stdlib.h>
 
 char * recebe_palavra();
+void invalido();
 
 #endif

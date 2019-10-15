@@ -20,8 +20,16 @@ typedef struct lista_aluno{
 Aluno * cria_aluno();
 Lista_Aluno * cria_lista_aluno();
 Aluno * recebe_aluno();
+
 void push_aluno(Lista_Aluno * lista, Aluno * aluno);
 int  is_empty_aluno(Lista_Aluno * lista); 
+
 void print_aluno(Lista_Aluno * lista);
+
+void edita_aluno(Lista_Aluno * lista, int indice);
 void apaga_aluno(Lista_Aluno * lista, int indice);
+
+int procura(Lista_Aluno * lista,int opc);
+
+
 #endif

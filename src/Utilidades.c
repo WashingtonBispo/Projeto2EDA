@@ -9,3 +9,8 @@ char * recebe_palavra(){
 	aux = realloc(aux, sizeof(char)*strlen(aux));
 	return aux;
 }
+
+void invalido(){
+	printf("Entrada Invalida\n");
+	system("sleep 2");
+}
