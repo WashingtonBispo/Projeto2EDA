@@ -65,8 +65,8 @@ int main(){
 			
 			}
 			
-			if(n!=-1 && opc==4) edita_aluno(alunos, n);
-			else if(n!=-1 && opc==5) apaga_aluno(alunos, n);
+			if(n!=-1 && opc==4) edita_aluno(alunos, n), sucesso();
+			else if(n!=-1 && opc==5) apaga_aluno(alunos, n), sucesso();
 			else printf("Não encontrado\n");
 
 		}

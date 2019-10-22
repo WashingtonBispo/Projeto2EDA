@@ -72,7 +72,8 @@ void edita_aluno(Lista_Aluno * lista, int indice){
 	for(int i=1;i<indice;i++){
 		aux = aux->next;
 		}
-	
+		
+	system("clear");	
 	if(opc==1 || opc==4) printf("Digite o novo nome: "), aux-> nome = recebe_palavra();
 	if(opc==2 || opc==4) printf("Digite a nova matricula: "), aux-> matricula = recebe_palavra();
 	if(opc==3 || opc==4) printf("Digite o novo email: "), aux-> email = recebe_palavra();
@@ -100,21 +101,59 @@ int procura(Lista_Aluno * lista, int opc){
 	Aluno * aux;
 	aux=lista->head;
 	char pal[100];
+	int v[50], qual, qtd=0,cont=0;
+
 	printf("Digite o dado que deseja busca: ");
 	scanf(" %s", pal);
-
-	if(opc==2){
+	
+	if(opc==1){
 		for(int i=1;i<=lista->size;i++){
-			if(strcmp(pal,aux->matricula)==0) return i;
+			if(strstr(aux->nome,pal)!=NULL)
+				v[qtd++]=i;
+
 			aux = aux->next;
 		}
 	}
+
+	if(opc==2){
+		for(int i=1;i<=lista->size;i++){
+			if(strstr(aux->matricula,pal)!=NULL)
+				v[qtd++]=i;
+
+			aux = aux->next;
+		}
+	}
+
 	if(opc==3){
 		for(int i=1;i<=lista->size;i++){
-			if(strcmp(pal,aux->email)==0) return i;
+			if(strstr(aux->email,pal)!=NULL)
+				v[qtd++]=i;
 			aux = aux->next;
 		}
 	}	
 
-	return -1;
+	if(qtd==0) return -1;
+	else if(qtd==1) return v[0];
+	else{
+		system("clear");
+		aux = lista -> head;
+		printf("As seguintes pessoas possuem esses dados: \n");
+		for(int i=1;i<=lista->size;i++){
+			if(v[cont]==i){
+				printf("Aluno %d\nNome: %s\nNome: %s\nMatricula: %s\n\n",cont+1, aux->nome, aux->matricula, aux->email);
+				
+				cont++;
+			}
+				aux = aux->next;
+		}
+		printf("\nQual delas deseja?\n");
+		
+		do{
+			scanf("%d", &qual);
+		}while(!exist_in_array(v,qtd,v[qual-1]));
+
+		system("clear");
+		return v[qual-1];
+	}
+
 	}
