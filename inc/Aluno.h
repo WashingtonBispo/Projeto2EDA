@@ -20,6 +20,7 @@ typedef struct lista_aluno{
 Aluno * cria_aluno();
 Lista_Aluno * cria_lista_aluno();
 Aluno * recebe_aluno();
+Aluno * mandar_aluno(Lista_Aluno * lista,int  indice);
 
 void push_aluno(Lista_Aluno * lista, Aluno * aluno);
 int  is_empty_aluno(Lista_Aluno * lista); 

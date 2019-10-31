@@ -49,11 +49,16 @@ void print_aluno(Lista_Aluno * lista){
 	aux = lista->head;
 	printf("LISTA DE ALUNOS\n");
 	while(aux!= NULL){
+		GRAY;
 		printf("------------------------------------------------------------\n");
+		WHITE;
 		printf("Nome: %s\n", aux->nome);
 		printf("Matricula: %s\n", aux->matricula);
 		printf("Email: %s\n", aux->email);
-		
+		if(is_empty_materia(aux->historico))
+			printf("Aluno sem Disciplina\n");
+		else
+			printf("Numero de Disciplinas: %d\n", aux->historico->size);
 		aux=aux->next;
 	}
 }
@@ -66,7 +71,12 @@ void edita_aluno(Lista_Aluno * lista, int indice){
 	
 	do{
 		scanf("%d", &opc);
-		if(opc>4 || opc<1) printf("ENTRADA INVALIDA\n->");
+		if(opc>4 || opc<1){
+			RED;
+			printf("ENTRADA INVALIDA\n");
+			RESET;
+			printf("->");
+		}
 	}while(opc>4 || opc<1);
 
 	for(int i=1;i<indice;i++){
@@ -79,6 +89,16 @@ void edita_aluno(Lista_Aluno * lista, int indice){
 	if(opc==3 || opc==4) printf("Digite o novo email: "), aux-> email = recebe_palavra();
 
 
+}
+
+Aluno * mandar_aluno(Lista_Aluno * lista,int  indice){
+	Aluno * aux = lista ->head;
+
+	for(int i=1;i<indice;i++){
+		aux = aux->next;
+	}
+
+	return aux;
 }
 
 void apaga_aluno(Lista_Aluno * lista, int indice){
